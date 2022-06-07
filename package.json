@@ -1,0 +1,19 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "bin": "bin/gendiff.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wow",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^9.2.0"
+  },
+  "devDependencies": {
+    "jest": "^28.1.0"
+  }
+}
