@@ -5,5 +5,6 @@
 CLI (Command-line interface).
 
 ## Description
-Compares two configuration files and shows a difference
+Compares two configuration files and shows a difference.
+
 in the process
