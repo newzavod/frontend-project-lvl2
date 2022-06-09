@@ -2,8 +2,8 @@
 [![Actions Status](https://github.com/newzavod/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/newzavod/frontend-project-lvl2/actions)
 
 # Project Title
-CLI (Command-line interface) to some JavaScript string utilities.
+CLI (Command-line interface).
 
 ## Description
-Сomparing two configuration files.
+Compares two configuration files and shows a difference
 in the process
