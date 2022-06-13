@@ -8,3 +8,8 @@ CLI (Command-line interface).
 Compares two configuration files and shows a difference.
 
 in the process
+
+### Start
+
+make start
+
