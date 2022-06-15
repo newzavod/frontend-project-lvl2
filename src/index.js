@@ -25,6 +25,13 @@ const gendiff = (data1, data2) => {
                 type: 'deleted',
             };
         }
+        if (_.isObject(data1[key]) && _.isObject(data2[key])) {
+            return {
+                name: key,
+                type: 'nested',
+                children: gendiff(data1[key], data2[key])
+            };
+        }
         if (data1[key] !== data2[key]) {
             return {
                 name: key,
