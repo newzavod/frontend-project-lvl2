@@ -51,37 +51,39 @@ const gendiff = (data1, data2) => {
     return result;
 };
 
+// const readFile = (fileName) => readFileSync(path.resolve(process.cwd(), fileName), 'utf-8');
 export default (filepath1, filepath2) => {
     const data1 = readFileSync(filepath1, 'utf-8');
     const data2 = readFileSync(filepath2, 'utf-8');
-    // console.log(data1);
-    // {
-    //     "host": "hexlet.io",
-    //     "timeout": 50,
-    //     "proxy": "123.234.53.22",
-    //     "follow": false
-    // }
-    // console.log(data2);
-    // {
-    //     "timeout": 20,
-    //     "verbose": true,
-    //     "host": "hexlet.io"
-    // }
 
     const obj1 = JSON.parse(data1);
     const obj2 = JSON.parse(data2);
 
-    console.log(gendiff(obj1, obj2));
+    const diff = gendiff(obj1, obj2);
+    console.log(diff);
 
+    for (const item of diff) {
+        if (`${item.type}` === 'deleted') {
+            console.log((`- ${item.name}: ${item.value}`));
+        }
+        if (`${item.type}` === 'unchanged') {
+            console.log(`  ${item.name}: ${item.value}`);
+        }
+        if (`${item.type}` === 'changed') {
+            console.log(`- ${item.name}: ${item.value1}`);
+            console.log(`+ ${item.name}: ${item.value2}`);
+        }
+        if (`${item.type}` === 'added') {
+            console.log(`+ ${item.name}: ${item.value}`);
+        }
+    }
 };
-//obj1↓
-//{
-//   host: 'hexlet.io',
-//   timeout: 50,
-//   proxy: '123.234.53.22',
-//   follow: false
-// }
-//obj2↓
-//{ timeout: 20, verbose: true, host: 'hexlet.io' }
-
-
+    //obj1↓
+    //{
+    //   host: 'hexlet.io',
+    //   timeout: 50,
+    //   proxy: '123.234.53.22',
+    //   follow: false
+    // }
+    //obj2↓
+    //{ timeout: 20, verbose: true, host: 'hexlet.io' }
