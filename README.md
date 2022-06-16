@@ -2,7 +2,7 @@
 [![Actions Status](https://github.com/newzavod/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/newzavod/frontend-project-lvl2/actions)
 
 ### Codeclimate
-<a href="https://codeclimate.com/github/newzavod/frontend-project-lvl2/maintainability"><img src="https://api.codeclimate.com/v1/badges/f15eb7ff0a18f61e7847/maintainability" /></a>
+[![Maintainability](https://api.codeclimate.com/v1/badges/f15eb7ff0a18f61e7847/maintainability)](https://codeclimate.com/github/newzavod/frontend-project-lvl2/maintainability)
 
 ### My tests
 [![test my project](https://github.com/newzavod/frontend-project-lvl2/actions/workflows/nodejs.yml/badge.svg)](https://github.com/newzavod/frontend-project-lvl2/actions/workflows/nodejs.yml)
