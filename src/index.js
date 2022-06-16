@@ -83,3 +83,5 @@ export default (filepath1, filepath2) => {
 // }
 //obj2↓
 //{ timeout: 20, verbose: true, host: 'hexlet.io' }
+
+
