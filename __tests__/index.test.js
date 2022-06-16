@@ -1,5 +1,5 @@
-import gendiff from '../src/index.js';
+// import gendiff from '../src/index.js';
 
-test('gendiff', () => {
+// test('gendiff', () => {
 
-});
+// });
