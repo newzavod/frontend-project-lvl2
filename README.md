@@ -19,3 +19,6 @@ in the process
 
 make start
 
+### Example
+
+[![asciicast](https://asciinema.org/a/PfXqiaS2BqgN2JTvd7naR2c2X.svg)](https://asciinema.org/a/PfXqiaS2BqgN2JTvd7naR2c2X)
