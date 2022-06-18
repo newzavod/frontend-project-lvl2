@@ -1,14 +1,14 @@
+// import path from 'path';
 import { readFileSync } from 'fs';
 import _ from 'lodash';
+// import readFile from '.read-file.js';
 
-const gendiff = (data1, data2) => {
+const genDiff = (data1, data2) => {
     let result = {};
 
     const keys1 = _.keys(data1);
     const keys2 = _.keys(data2);
     const keys = _.sortBy(_.union(keys1, keys2));
-    // console.log(keys); // [ 'host', 'timeout', 'proxy', 'follow', 'verbose' ]
-    // console.log(keys); // [ 'follow', 'host', 'proxy', 'timeout', 'verbose' ]
 
     result = keys.map((key) => {
         if (!_.has(data1, key)) {
@@ -29,7 +29,7 @@ const gendiff = (data1, data2) => {
             return {
                 name: key,
                 type: 'nested',
-                children: gendiff(data1[key], data2[key])
+                children: genDiff(data1[key], data2[key])
             };
         }
         if (data1[key] !== data2[key]) {
@@ -38,7 +38,6 @@ const gendiff = (data1, data2) => {
                 value1: data1[key],
                 value2: data2[key],
                 type: 'changed',
-
             };
         }
         return {
@@ -47,11 +46,9 @@ const gendiff = (data1, data2) => {
             type: 'unchanged',
         };
     });
-
     return result;
 };
 
-// const readFile = (fileName) => readFileSync(path.resolve(process.cwd(), fileName), 'utf-8');
 export default (filepath1, filepath2) => {
     const data1 = readFileSync(filepath1, 'utf-8');
     const data2 = readFileSync(filepath2, 'utf-8');
@@ -59,25 +56,28 @@ export default (filepath1, filepath2) => {
     const obj1 = JSON.parse(data1);
     const obj2 = JSON.parse(data2);
 
-    const diff = gendiff(obj1, obj2);
-    console.log(diff);
-
-    for (const item of diff) {
+    const arrDiffKeys = genDiff(obj1, obj2);
+    const parts = [];
+    for (const item of arrDiffKeys) {
         if (`${item.type}` === 'deleted') {
-            console.log((`- ${item.name}: ${item.value}`));
+            parts.push((`- ${item.name}: ${item.value}`));
         }
         if (`${item.type}` === 'unchanged') {
-            console.log(`  ${item.name}: ${item.value}`);
+            parts.push(`  ${item.name}: ${item.value}`);
         }
         if (`${item.type}` === 'changed') {
-            console.log(`- ${item.name}: ${item.value1}`);
-            console.log(`+ ${item.name}: ${item.value2}`);
+            parts.push(`- ${item.name}: ${item.value1}`);
+            parts.push(`+ ${item.name}: ${item.value2}`);
         }
         if (`${item.type}` === 'added') {
-            console.log(`+ ${item.name}: ${item.value}`);
+            parts.push(`+ ${item.name}: ${item.value}`);
         }
     }
+    const diffStr = parts.join('\n');
+    const result = `{\n${diffStr}\n}`;
+    return result;
 };
+
     //obj1↓
     //{
     //   host: 'hexlet.io',

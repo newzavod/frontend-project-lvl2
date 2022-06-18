@@ -1,4 +1,4 @@
-// import gendiff from '../src/index.js';
+// import genDiff from '../src/index.js';
 
 // test('gendiff', () => {
 
