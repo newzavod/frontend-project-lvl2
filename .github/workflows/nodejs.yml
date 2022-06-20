@@ -1,14 +1,21 @@
+#Name of workflow
 name: 'test my project'
+
+#Trigger the workflow on push or pull request
 on:
   - push
+  - pull_request
 
 jobs:
   build:
+
+    #The type of machine to run the job on
     runs-on:  ubuntu-latest
 
     strategy:
+      #Node version list
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [14.x]
 
     steps:
     - uses: actions/checkout@v2

@@ -2,13 +2,14 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "type": "module",
-  "description": "",
-  "main": "index.js",
+  "description": "Hexlet Frontend project level 2",
+  "main": "src/index.js",
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test-watch": "npx -n '--experimental-vm-modules  --no-warnings' jest --watchAll"
   },
   "author": "wow",
   "license": "ISC",
@@ -17,7 +18,15 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
+    "@jest/globals": "^28.1.1",
     "eslint": "^8.17.0",
-    "jest": "^28.1.1"
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.5.3",
+    "jest": "^28.1.1",
+    "jest-cli": "^28.1.1",
+    "npm-check-updates": "^14.0.1",
+    "prettier": "^2.7.1",
+    "simple-git-hooks": "^2.8.0"
   }
 }
