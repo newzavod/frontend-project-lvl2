@@ -1,5 +1,5 @@
-// import path from 'path';
-import { readFileSync } from 'fs';
+import { resolve } from 'path';
+import fs from 'fs';
 import _ from 'lodash';
 // import readFile from '.read-file.js';
 
@@ -29,7 +29,7 @@ const genDiff = (data1, data2) => {
       return {
         name: key,
         type: 'nested',
-        children: genDiff(data1[key], data2[key])
+        children: genDiff(data1[key], data2[key]),
       };
     }
     if (data1[key] !== data2[key]) {
@@ -50,14 +50,15 @@ const genDiff = (data1, data2) => {
 };
 
 export default (filepath1, filepath2) => {
-  const data1 = readFileSync(filepath1, 'utf-8');
-  const data2 = readFileSync(filepath2, 'utf-8');
+  const path1 = resolve(process.cwd(), filepath1);
+  const path2 = resolve(process.cwd(), filepath2);
 
-  const obj1 = JSON.parse(data1);
-  const obj2 = JSON.parse(data2);
-
-  const arrDiffKeys = genDiff(obj1, obj2);
+  const data1 = JSON.parse(fs.readFileSync(path1, 'utf-8'));
+  const data2 = JSON.parse(fs.readFileSync(path2, 'utf-8'));
+  console.log(data1);
+  const arrDiffKeys = genDiff(data1, data2);
   const parts = [];
+
   for (const item of arrDiffKeys) {
     if (`${item.type}` === 'deleted') {
       parts.push((`- ${item.name}: ${item.value}`));
@@ -78,12 +79,12 @@ export default (filepath1, filepath2) => {
   return result;
 };
 
-//obj1↓
-//{
+// obj1↓
+// {
 //   host: 'hexlet.io',
 //   timeout: 50,
 //   proxy: '123.234.53.22',
 //   follow: false
 // }
-//obj2↓
-//{ timeout: 20, verbose: true, host: 'hexlet.io' }
+// obj2↓
+// { timeout: 20, verbose: true, host: 'hexlet.io' }
