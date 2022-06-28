@@ -1,5 +1,3 @@
 /node_modules
 /asciinema
-/src/read-file.js
-/src/build-tree.js
-/src/parse.js
+/src/formatters/stylish.js

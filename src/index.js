@@ -1,65 +1,20 @@
-import { resolve } from 'path';
-import fs from 'fs';
-import _ from 'lodash';
-// import readFile from '.read-file.js';
+import parse from './parses.js';
+import buildTree from './build_tree.js';
+import { readFile, getFormat } from './read_file.js';
 
-const genDiff = (data1, data2) => {
-  let result = {};
+const genDiff = (filepath1, filepath2) => {
+  const readFile1 = readFile(filepath1);
+  const readFile2 = readFile(filepath2);
 
-  const keys1 = _.keys(data1);
-  const keys2 = _.keys(data2);
-  const keys = _.sortBy(_.union(keys1, keys2));
+  const file1 = parse(readFile1, getFormat(filepath1));
+  const file2 = parse(readFile2, getFormat(filepath2));
 
-  result = keys.map((key) => {
-    if (!_.has(data1, key)) {
-      return {
-        name: key,
-        value: data2[key],
-        type: 'added',
-      };
-    }
-    if (!_.has(data2, key)) {
-      return {
-        name: key,
-        value: data1[key],
-        type: 'deleted',
-      };
-    }
-    if (_.isObject(data1[key]) && _.isObject(data2[key])) {
-      return {
-        name: key,
-        type: 'nested',
-        children: genDiff(data1[key], data2[key]),
-      };
-    }
-    if (data1[key] !== data2[key]) {
-      return {
-        name: key,
-        value1: data1[key],
-        value2: data2[key],
-        type: 'changed',
-      };
-    }
-    return {
-      name: key,
-      value: data1[key],
-      type: 'unchanged',
-    };
-  });
-  return result;
-};
-
-export default (filepath1, filepath2) => {
-  const path1 = resolve(process.cwd(), filepath1);
-  const path2 = resolve(process.cwd(), filepath2);
-
-  const data1 = JSON.parse(fs.readFileSync(path1, 'utf-8'));
-  const data2 = JSON.parse(fs.readFileSync(path2, 'utf-8'));
-  console.log(data1);
-  const arrDiffKeys = genDiff(data1, data2);
+  const tree = buildTree(file1, file2);
+  // console.log(tree);
+  // return diffTree(tree, format);
   const parts = [];
 
-  for (const item of arrDiffKeys) {
+  for (const item of tree) {
     if (`${item.type}` === 'deleted') {
       parts.push((`- ${item.name}: ${item.value}`));
     }
@@ -79,12 +34,4 @@ export default (filepath1, filepath2) => {
   return result;
 };
 
-// obj1↓
-// {
-//   host: 'hexlet.io',
-//   timeout: 50,
-//   proxy: '123.234.53.22',
-//   follow: false
-// }
-// obj2↓
-// { timeout: 20, verbose: true, host: 'hexlet.io' }
+export default genDiff;
