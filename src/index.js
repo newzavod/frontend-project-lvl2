@@ -9,10 +9,8 @@ const genDiff = (filepath1, filepath2) => {
   const file2 = parse(readFile2, getFormat(filepath2));
 
   const tree = buildTree(file1, file2);
-
   const parts = [];
-
-  for (const item of tree) {
+  tree.forEach((item) => {
     if (`${item.type}` === 'deleted') {
       parts.push((`- ${item.name}: ${item.value}`));
     }
@@ -26,7 +24,7 @@ const genDiff = (filepath1, filepath2) => {
     if (`${item.type}` === 'added') {
       parts.push(`+ ${item.name}: ${item.value}`);
     }
-  }
+  });
   const diffStr = parts.join('\n');
   const result = `{\n${diffStr}\n}`;
   return result;
