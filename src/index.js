@@ -5,13 +5,11 @@ import { readFile, getFormat } from './read_file.js';
 const genDiff = (filepath1, filepath2) => {
   const readFile1 = readFile(filepath1);
   const readFile2 = readFile(filepath2);
-
   const file1 = parse(readFile1, getFormat(filepath1));
   const file2 = parse(readFile2, getFormat(filepath2));
 
   const tree = buildTree(file1, file2);
-  // console.log(tree);
-  // return diffTree(tree, format);
+
   const parts = [];
 
   for (const item of tree) {
