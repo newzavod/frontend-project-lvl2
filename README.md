@@ -4,6 +4,9 @@
 ### Codeclimate
 [![Maintainability](https://api.codeclimate.com/v1/badges/f15eb7ff0a18f61e7847/maintainability)](https://codeclimate.com/github/newzavod/frontend-project-lvl2/maintainability)
 
+### Test Coverage
+[![Test Coverage](https://api.codeclimate.com/v1/badges/f15eb7ff0a18f61e7847/test_coverage)](https://codeclimate.com/github/newzavod/frontend-project-lvl2/test_coverage)
+
 ### My tests
 [![test my project](https://github.com/newzavod/frontend-project-lvl2/actions/workflows/nodejs.yml/badge.svg)](https://github.com/newzavod/frontend-project-lvl2/actions/workflows/nodejs.yml)
 
