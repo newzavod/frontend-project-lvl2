@@ -9,10 +9,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const getFixturePath = (filename) => resolve(__dirname, '..', '__fixtures__', filename);
-const readFile = (filename) => readFileSync(getFixturePath(filename, 'utf-8'));
+const readFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8');
 
-const resultDiff = readFile('resultDiff.txt');
-console.log(resultDiff);
+const expectedJSON = readFile('expectedJSON.txt');
+
 test('gendiff', () => {
-  expect(genDiff('file1.json', 'file2.json')).toEqual(resultDiff);
+  expect(genDiff('file1.json', 'file2.json')).toEqual(expectedJSON);
 });
