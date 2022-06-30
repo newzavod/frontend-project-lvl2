@@ -3,12 +3,18 @@ import buildTree from './build_tree.js';
 import { readFile, getFormat } from './read_file.js';
 
 const genDiff = (filepath1, filepath2) => {
+  // file content type string ↓
   const readFile1 = readFile(filepath1);
   const readFile2 = readFile(filepath2);
+
+  // string to object
   const file1 = parse(readFile1, getFormat(filepath1));
   const file2 = parse(readFile2, getFormat(filepath2));
 
+  // make diff tree
   const tree = buildTree(file1, file2);
+
+  // tree to string result
   const parts = [];
   tree.forEach((item) => {
     if (`${item.type}` === 'deleted') {
