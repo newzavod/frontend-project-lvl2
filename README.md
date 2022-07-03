@@ -10,10 +10,6 @@
 ### My tests
 [![test my project](https://github.com/newzavod/frontend-project-lvl2/actions/workflows/nodejs.yml/badge.svg)](https://github.com/newzavod/frontend-project-lvl2/actions/workflows/nodejs.yml)
 
-### Visitors
-[![Visits Badge](https://badges.pufler.dev/visits/newzavod/frontend-project-lvl2)]
-
-
 # Project Title
 CLI (Command-line interface).
 
