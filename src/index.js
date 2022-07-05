@@ -2,7 +2,7 @@ import parse from './parses.js';
 import buildTree from './build_tree.js';
 import { readFile, getFormat } from './read_file.js';
 
-const genDiff = (filepath1, filepath2) => {
+const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
   // file content type string ↓
   const readFile1 = readFile(filepath1);
   const readFile2 = readFile(filepath2);

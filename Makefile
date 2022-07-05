@@ -1,11 +1,14 @@
 install:
 	npm ci
 
-start:
+start3:
 	gendiff file1.json file2.json
 
-start1:
+start2:
 	gendiff file1.yml file2.yml
+
+start1:
+	gendiff file11.json file21.json
 
 lint:
 	npx eslint .
