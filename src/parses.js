@@ -1,15 +1,15 @@
 import { load } from 'js-yaml';
 
-const parse = (filename, format) => {
-  switch (format) {
+const parsers = (content, formatName) => {
+  switch (formatName) {
     case 'json':
-      return JSON.parse(filename);
+      return JSON.parse(content);
     case 'yml':
     case 'yaml':
-      return load(filename);
+      return load(content);
     default:
-      throw new Error(`Invalid file format type: ${format}! try supported formats. You can use JSON or YAML formats.`);
+      throw new Error(`Invalid file format type: ${formatName}! try supported formats. You can use JSON or YAML formats.`);
   }
 };
 
-export default parse;
+export default parsers;

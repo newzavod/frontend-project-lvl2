@@ -1,6 +1,16 @@
-import parse from './parses.js';
+import { dirname, resolve, extname } from 'path';
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import parsers from './parses.js';
 import buildTree from './build_tree.js';
-import { readFile, getFormat } from './read_file.js';
+import format from './formatters/index.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const getFormat = (filename) => extname(filename).slice(1);
+const getFixturePath = (filename) => resolve(__dirname, '..', '__fixtures__', filename);
+const readFile = (filename) => readFileSync(getFixturePath(filename, 'utf-8'));
 
 const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
   // file content type string ↓
@@ -8,32 +18,13 @@ const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
   const readFile2 = readFile(filepath2);
 
   // string to object
-  const file1 = parse(readFile1, getFormat(filepath1));
-  const file2 = parse(readFile2, getFormat(filepath2));
+  const file1 = parsers(readFile1, getFormat(filepath1));
+  const file2 = parsers(readFile2, getFormat(filepath2));
 
-  // make diff tree
+  // make diff tree, it is array
   const tree = buildTree(file1, file2);
 
-  // tree to string result
-  const parts = [];
-  tree.forEach((item) => {
-    if (`${item.type}` === 'deleted') {
-      parts.push((`- ${item.name}: ${item.value}`));
-    }
-    if (`${item.type}` === 'unchanged') {
-      parts.push(`  ${item.name}: ${item.value}`);
-    }
-    if (`${item.type}` === 'changed') {
-      parts.push(`- ${item.name}: ${item.value1}`);
-      parts.push(`+ ${item.name}: ${item.value2}`);
-    }
-    if (`${item.type}` === 'added') {
-      parts.push(`+ ${item.name}: ${item.value}`);
-    }
-  });
-  const diffStr = parts.join('\n');
-  const result = `{\n${diffStr}\n}`;
-  return result;
+  return format(tree, formatName);
 };
 
 export default genDiff;
