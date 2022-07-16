@@ -18,8 +18,8 @@ const readFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8');
 const getExtension = (filename) => extname(filename).slice(1);
 
 const expectedResultStylish = readFile('expectedResultStylish.txt');
-// const expectedResultPlain = readFile('expectedResultPlain.txt');
-// const expectedResultJson = readFile('expectedResultJson.txt');
+const expectedResultPlain = readFile('expectedResultPlain.txt');
+const expectedResultJson = readFile('expectedResultJson.txt');
 
 const formatsFiles = ['json', 'yml', 'yaml'];
 
@@ -32,6 +32,6 @@ test.each(formatsFiles)('diff formats of files (.json, .yml, .yaml)', (formatFil
   const file2 = parsers(readFile2, getExtension(fileName2));
 
   expect(format(buildTree(file1, file2), 'stylish')).toEqual(expectedResultStylish);
-  //   expect(format(buildTree(file1, file2), 'plain')).toEqual(expectedResultPlain);
-  //   expect(format(buildTree(file1, file2), 'json')).toEqual(expectedResultJson);
+  expect(format(buildTree(file1, file2), 'plain')).toEqual(expectedResultPlain);
+  expect(format(buildTree(file1, file2), 'json')).toEqual(expectedResultJson);
 });
