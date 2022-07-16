@@ -2,9 +2,8 @@ import { test, expect } from '@jest/globals';
 import { dirname, extname, resolve } from 'path';
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
-// import buildTree from '../src/build_tree.js';
+import buildTree from '../src/build_tree.js';
 import format from '../src/formatters/index.js';
-import genDiff from '../src/index.js';
 import parsers from '../src/parses.js';
 
 // path to file
@@ -24,21 +23,15 @@ const expectedResultStylish = readFile('expectedResultStylish.txt');
 
 const formatsFiles = ['json', 'yml', 'yaml'];
 
-test('gendiff', () => {
-  expect(genDiff('file1.json', 'file2.json')).toEqual(expectedResultStylish);
-  expect(genDiff('file1.yml', 'file2.yml')).toEqual(expectedResultStylish);
+test.each(formatsFiles)('diff formats of files (.json, .yml, .yaml)', (formatFile) => {
+  const fileName1 = `file1.${formatFile}`;
+  const fileName2 = `file2.${formatFile}`;
+  const readFile1 = readFile(fileName1);
+  const readFile2 = readFile(fileName2);
+  const file1 = parsers(readFile1, getExtension(fileName1));
+  const file2 = parsers(readFile2, getExtension(fileName2));
 
+  expect(format(buildTree(file1, file2), 'stylish')).toEqual(expectedResultStylish);
+  //   expect(format(buildTree(file1, file2), 'plain')).toEqual(expectedResultPlain);
+  //   expect(format(buildTree(file1, file2), 'json')).toEqual(expectedResultJson);
 });
-
-// test.each(formatsFiles)('diff formats of files (.json, .yaml, .yml) & output styles', (formatFile) => {
-//   const fileName1 = `file1.${formatFile}`;
-//   const fileName2 = `file2.${formatFile}`;
-//   const readFile1 = readFile(fileName1);
-//   const readFile2 = readFile(fileName2);
-//   const file1 = parsers(readFile1, getExtension(fileName1));
-//   const file2 = parsers(readFile2, getExtension(fileName2));
-
-//   expect(format(genDiff(file1, file2), 'stylish')).toEqual(expectedResultStylish);
-//   // expect(format(buildTree(file1, file2), 'plain')).toEqual(expectedResultPlain);
-//   // expect(format(buildTree(file1, file2), 'json')).toEqual(expectedResultJson);
-// });

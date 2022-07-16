@@ -11,30 +11,30 @@
       {
         "name": "setting1",
         "value": "Value 1",
-        "type": "unchanged"        
+        "type": "unchanged"
       },
       {
         "name": "setting2",
         "value": 200,
-        "type": "removed",
+        "type": "deleted"
       },
       {
         "name": "setting3",
-        "type": "updated",
         "value1": true,
         "value2": null,
+        "type": "changed"
       },
       {
         "name": "setting4",
         "value": "blah blah",
-         "type": "added"
+        "type": "added"
       },
       {
         "name": "setting5",
-        "type": "added",
         "value": {
           "key5": "value5"
-        }
+        },
+        "type": "added"
       },
       {
         "name": "setting6",
@@ -46,9 +46,9 @@
             "children": [
               {
                 "name": "wow",
-                "type": "changed",
                 "value1": "",
-                "value2": "so much"
+                "value2": "so much",
+                "type": "changed"
               }
             ]
           },
@@ -60,8 +60,7 @@
           {
             "name": "ops",
             "value": "vops",
-             "type": "added"
-
+            "type": "added"
           }
         ]
       }
@@ -73,45 +72,45 @@
     "children": [
       {
         "name": "baz",
-        "type": "changed",
         "value1": "bas",
         "value2": "bars",
+        "type": "changed"
       },
       {
         "name": "foo",
         "value": "bar",
-        "type": "unchanged",
+        "type": "unchanged"
       },
       {
         "name": "nest",
-        "type": "changed",
         "value1": {
           "key": "value"
         },
-        "value2": "str"
+        "value2": "str",
+        "type": "changed"
       }
     ]
   },
   {
     "name": "group2",
-    "type": "removed",
     "value": {
       "abc": 12345,
       "deep": {
         "id": 45
       }
-    }
+    },
+    "type": "deleted"
   },
   {
     "name": "group3",
-    "type": "added",
     "value": {
       "deep": {
         "id": {
           "number": 45
         }
-      }
+      },
       "fee": 100500
-    }
+    },
+    "type": "added"
   }
 ]
