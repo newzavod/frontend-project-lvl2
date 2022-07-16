@@ -8,7 +8,7 @@ start4:
 	gendiff --format json file1.yml file2.yml
 
 start3:
-	gendiff --format json file1.yaml file2.yaml
+	gendiff file1.yml file2.yml
 
 start2:
 	gendiff --format plain file1.json file2.json

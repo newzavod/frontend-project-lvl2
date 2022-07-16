@@ -21,9 +21,9 @@ const expectedResultStylish = readFile('expectedResultStylish.txt');
 const expectedResultPlain = readFile('expectedResultPlain.txt');
 const expectedResultJson = readFile('expectedResultJson.txt');
 
-const formatsFiles = ['json', 'yml', 'yaml'];
+const formatsFiles = ['json'];
 
-test.each(formatsFiles)('diff formats of files (.json, .yml, .yaml)', (formatFile) => {
+test.each(formatsFiles)('diff formats of files (.json)', (formatFile) => {
   const fileName1 = `file1.${formatFile}`;
   const fileName2 = `file2.${formatFile}`;
   const readFile1 = readFile(fileName1);
