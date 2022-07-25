@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 const createIndent = (level) => {
-  const replacer = ' ';
+  const replacer = '  ';
   const spacesCount = 2;
   const indentSize = level * spacesCount;
 
