@@ -1,6 +1,5 @@
-import { dirname, resolve, extname } from 'path';
+import { resolve, extname } from 'path';
 import { readFileSync } from 'fs';
-import { fileURLToPath } from 'url';
 import parsers from './parses.js';
 import buildTree from './build_tree.js';
 import format from './formatters/index.js';
