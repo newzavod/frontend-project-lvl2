@@ -1,21 +1,6 @@
 install:
 	npm ci
 
-start5:
-	gendiff --format json file1.json file2.json
-
-start4:
-	gendiff --format json file1.yml file2.yml
-
-start3:
-	gendiff file1.yml file2.yml
-
-start2:
-	gendiff --format plain file1.json file2.json
-
-start1:
-	gendiff file1.json file2.json
-
 lint:
 	npx eslint .
 
