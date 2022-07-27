@@ -5,12 +5,13 @@ import parsers from './parses.js';
 import buildTree from './build_tree.js';
 import format from './formatters/index.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// const __filepath = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filepath);
 
-const getFormat = (filename) => extname(filename).slice(1);
-const getFixturePath = (filename) => resolve(__dirname, '..', '__fixtures__', filename);
-const readFile = (filename) => readFileSync(getFixturePath(filename, 'utf-8'));
+const getFormat = (filepath) => extname(filepath).slice(1);
+const getFixturePath = (filepath) => resolve(process.cwd(), filepath);
+
+const readFile = (filepath) => readFileSync(getFixturePath(filepath, 'utf-8'));
 
 const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
   const readFile1 = readFile(filepath1);
