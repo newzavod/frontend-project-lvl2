@@ -55,29 +55,3 @@ const stylish = (tree, depth = 1) => {
 };
 
 export default stylish;
-
-// import _ from 'lodash';
-
-// const stylish = (tree) => {
-//   const parts = [];
-//   tree.forEach((item) => {
-//     if (`${item.type}` === 'deleted') {
-//       parts.push((`- ${item.name}: ${item.value}`));
-//     }
-//     if (`${item.type}` === 'unchanged') {
-//       parts.push(`  ${item.name}: ${item.value}`);
-//     }
-//     if (`${item.type}` === 'changed') {
-//       parts.push(`- ${item.name}: ${item.value1}`);
-//       parts.push(`+ ${item.name}: ${item.value2}`);
-//     }
-//     if (`${item.type}` === 'added') {
-//       parts.push(`+ ${item.name}: ${item.value}`);
-//     }
-//   });
-//   const diffStr = parts.join('\n');
-//   const result = `{\n${diffStr}\n}`;
-//   return result;
-// };
-
-// export default stylish;

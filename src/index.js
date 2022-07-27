@@ -13,15 +13,12 @@ const getFixturePath = (filename) => resolve(__dirname, '..', '__fixtures__', fi
 const readFile = (filename) => readFileSync(getFixturePath(filename, 'utf-8'));
 
 const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
-  // file content type string ↓
   const readFile1 = readFile(filepath1);
   const readFile2 = readFile(filepath2);
 
-  // string to object
   const file1 = parsers(readFile1, getFormat(filepath1));
   const file2 = parsers(readFile2, getFormat(filepath2));
 
-  // make diff tree, it is array
   const tree = buildTree(file1, file2);
 
   return format(tree, formatName);
