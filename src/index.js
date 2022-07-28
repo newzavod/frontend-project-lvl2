@@ -4,9 +4,6 @@ import parsers from './parses.js';
 import buildTree from './build_tree.js';
 import format from './formatters/index.js';
 
-// const __filepath = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filepath);
-
 const getFormat = (filepath) => extname(filepath).slice(1);
 const getFixturePath = (filepath) => resolve(process.cwd(), filepath);
 
