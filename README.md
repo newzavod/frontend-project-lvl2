@@ -18,9 +18,9 @@ Compares two configuration files and shows a difference.
 
 in the process
 
-### Start
+### Setup
 
-make start
+
 
 ### Example
 
