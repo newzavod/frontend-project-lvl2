@@ -24,4 +24,4 @@ make start
 
 ### Example
 
-[![asciicast](https://asciinema.org/a/PfXqiaS2BqgN2JTvd7naR2c2X.svg)](https://asciinema.org/a/PfXqiaS2BqgN2JTvd7naR2c2X)
+[![asciicast](https://asciinema.org/a/t8sgvL0r3PTzecAyBIFFp2gbA.svg)](https://asciinema.org/a/t8sgvL0r3PTzecAyBIFFp2gbA)
