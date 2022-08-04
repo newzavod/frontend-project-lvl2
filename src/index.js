@@ -1,10 +1,11 @@
 import { resolve, extname } from 'path';
 import { readFileSync } from 'fs';
-import parsers from './parses.js';
+import parsers from './parse.js';
 import buildTree from './build_tree.js';
 import format from './formatters/index.js';
 
 const getFormat = (filepath) => extname(filepath).slice(1);
+
 const getFixturePath = (filepath) => resolve(process.cwd(), filepath);
 
 const readFile = (filepath) => readFileSync(getFixturePath(filepath, 'utf-8'));

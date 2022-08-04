@@ -25,7 +25,7 @@ const plain = (tree) => {
           case 'nested':
             return iter(item.children, keys);
           default:
-            throw new Error(`Unknown type: ${item.type}`);
+            throw new Error('Unknown type');
         }
       });
     return lines.join('\n');

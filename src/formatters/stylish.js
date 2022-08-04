@@ -48,7 +48,7 @@ const stylish = (tree, depth = 1) => {
       case 'nested':
         return `${indents.openBracket}  ${item.name}: ${stylish(item.children, depth + 1)}`;
       default:
-        throw new Error(`Unknown type: '${item.name}'`);
+        throw new Error('Unknown type.');
     }
   });
   return ['{', ...items, `${indents.closeBracket}}`].join('\n');
