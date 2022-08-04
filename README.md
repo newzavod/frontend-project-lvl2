@@ -18,10 +18,11 @@ Compares two configuration files and shows a difference.
 
 in the process
 
-### Start
-
-make start
+### Setup
+* git clone https://github.com/newzavod/frontend-project-lvl2
+* cd frontend-project-lvl2/
+* make install
 
 ### Example
 
-[![asciicast](https://asciinema.org/a/PfXqiaS2BqgN2JTvd7naR2c2X.svg)](https://asciinema.org/a/PfXqiaS2BqgN2JTvd7naR2c2X)
+[![asciicast](https://asciinema.org/a/t8sgvL0r3PTzecAyBIFFp2gbA.svg)](https://asciinema.org/a/t8sgvL0r3PTzecAyBIFFp2gbA)
