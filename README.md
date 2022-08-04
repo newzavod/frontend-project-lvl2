@@ -16,8 +16,6 @@ CLI (Command-line interface).
 ## Description
 Compares two configuration files and shows a difference.
 
-in the process
-
 ### Setup
 * git clone https://github.com/newzavod/frontend-project-lvl2
 * cd frontend-project-lvl2/
